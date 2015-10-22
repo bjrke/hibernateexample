@@ -1,0 +1,19 @@
+group 'de.hsba'
+version '0.1-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'org.testng:testng:6.9.8'
+}
+
+test {
+    useTestNG()
+}
