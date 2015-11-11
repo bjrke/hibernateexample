@@ -11,9 +11,17 @@ repositories {
 }
 
 dependencies {
+    compile 'org.hibernate:hibernate-core:5.0.2.Final'
+    runtime 'org.postgresql:postgresql:9.4-1204-jdbc42'
     testCompile 'org.testng:testng:6.9.8'
 }
 
 test {
     useTestNG()
+}
+
+task runApp(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+
+    main = 'de.hsba.database.hibernate.example.HibernateExample'
 }
