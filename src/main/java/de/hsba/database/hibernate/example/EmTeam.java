@@ -1,9 +1,6 @@
 package de.hsba.database.hibernate.example;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by bjrke on 11.11.15.
@@ -22,4 +19,19 @@ public class EmTeam {
     @Column(name = "group_name")
     private String _groupName;
 
+    public String getTeamName() {
+        return _teamName;
+    }
+
+    public void setTeamName(final String teamName) {
+        _teamName = teamName;
+    }
+
+    public String getGroupName() {
+        return _groupName;
+    }
+
+    public void setGroupName(final String groupName) {
+        _groupName = groupName;
+    }
 }

@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     compile 'org.hibernate:hibernate-core:5.0.2.Final'
+    compile 'log4j:log4j:1.2.17'
     runtime 'org.postgresql:postgresql:9.4-1204-jdbc42'
     testCompile 'org.testng:testng:6.9.8'
 }

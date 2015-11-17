@@ -19,6 +19,8 @@ public class EmGame {
 
     @Id
     @Column(name = "id")
+    @SequenceGenerator(name="em_quali_pkey",sequenceName="em_quali_seq", allocationSize=0 )
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="em_quali_pkey")
     private long _id;
 
     @Column(name = "game_date")
@@ -60,8 +62,28 @@ public class EmGame {
         return _visitorGoals;
     }
 
+    public void setDate(final Date date) {
+        _date = date;
+    }
+
+    public void setHomeTeam(final String homeTeam) {
+        _homeTeam = homeTeam;
+    }
+
+    public void setHomeGoals(final int homeGoals) {
+        _homeGoals = homeGoals;
+    }
+
+    public void setVisitorTeam(final String visitorTeam) {
+        _visitorTeam = visitorTeam;
+    }
+
+    public void setVisitorGoals(final int visitorGoals) {
+        _visitorGoals = visitorGoals;
+    }
+
     @Override
     public String toString() {
-        return _homeTeam + " " + _homeGoals + " : " + _visitorGoals + " " + _visitorTeam + " at " +_date;
+        return "Spiel " + _id + ": " + _homeTeam + " " + _homeGoals + " : " + _visitorGoals + " " + _visitorTeam + " at " +_date;
     }
 }
