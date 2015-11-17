@@ -21,8 +21,14 @@ test {
     useTestNG()
 }
 
-task runApp(type: JavaExec) {
+task runHibernate(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
 
-    main = 'de.hsba.database.hibernate.example.HibernateExample'
+    main = 'de.hsba.database.hibernate.HibernateExample'
+}
+
+task runJDBC(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+
+    main = 'de.hsba.database.jdbc.JDBCExample'
 }

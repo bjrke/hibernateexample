@@ -1,4 +1,4 @@
-package de.hsba.database.hibernate.example;
+package de.hsba.database.hibernate;
 
 import javax.persistence.*;
 
