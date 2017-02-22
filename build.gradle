@@ -27,6 +27,12 @@ task runHibernate(type: JavaExec) {
     main = 'de.hsba.database.hibernate.HibernateExample'
 }
 
+task runHibernateEx(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+
+    main = 'de.hsba.database.hibernate.HibernateExampleEx'
+}
+
 task runJDBC(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
 

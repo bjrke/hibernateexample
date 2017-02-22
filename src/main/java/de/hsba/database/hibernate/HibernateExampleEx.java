@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by bjrke on 22.10.15.
  */
-public class HibernateExample {
+public class HibernateExampleEx {
 
     private static SessionFactory sessionFactory() {
         return new Configuration()
@@ -24,7 +24,7 @@ public class HibernateExample {
                 .setProperty("hibernate.connection.password", Config.JDBC_PASSWORD)
                 .setProperty("dialect", ProgressDialect.class.getCanonicalName())
                 .setProperty("show_sql", "true")
-                .addAnnotatedClass(EmGame.class)
+                .addAnnotatedClass(EmGameEx.class)
                 .addAnnotatedClass(EmTeam.class)
                 .buildSessionFactory();
     }
@@ -36,39 +36,19 @@ public class HibernateExample {
                 try {
                     tx = session.beginTransaction();
 
-                    // nach Id selektieren
-                    System.out.println("by id example:" + session.get(EmGame.class, new Long(1)));
+                    EmTeam germany =  session.get(EmTeam.class, "Deutschland");
 
                     // mit criteria api
-                    System.out.println("criteria example: ");
-
-                    List<EmGame> games = session.createCriteria(EmGame.class)
+                    System.out.println("criteria example:");
+                    List<EmGameEx> games = session.createCriteria(EmGameEx.class)
                             .add(Restrictions.or(
-                                    Restrictions.eq(EmGame.HOME_TEAM, "Deutschland"),
-                                    Restrictions.eq(EmGame.VISITOR_TEAM, "Deutschland")))
+                                    Restrictions.eq(EmGameEx.HOME_TEAM, germany),
+                                    Restrictions.eq(EmGameEx.VISITOR_TEAM, germany)))
                             .addOrder(Order.asc(EmGame.DATE))
                             .list();
-                    for ( EmGame game :games) {
+                    for ( EmGameEx game : games ) {
                         System.out.println(game);
                     }
-
-                    final EmTeam argentina = new EmTeam();
-                    argentina.setTeamName("Argentinien");
-                    argentina.setGroupName("X");
-
-                    session.save(argentina);
-                    EmGame g = new EmGame();
-                    g.setHomeGoals(2);
-                    g.setHomeTeam("Deutschland");
-                    g.setVisitorTeam("Argentinien");
-                    g.setVisitorGoals(4);
-                    g.setDate(new Date(2014 - 1900, 9 - 1, 3));
-
-                    // danach manuell löschen mit DELETE FROM em_quali WHERE visitor_team = 'Argentinien'; DELETE FROM em_team WHERE group_name = 'X';
-
-                    session.save(g);
-                    System.out.println("Id is" + g.getId());
-
                     tx.commit();
                 } catch ( RuntimeException e ) {
                     if ( tx != null ) {
@@ -77,6 +57,5 @@ public class HibernateExample {
                 }
             }
         }
-
-    }
+   }
 }

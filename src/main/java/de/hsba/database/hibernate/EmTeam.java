@@ -34,4 +34,9 @@ public class EmTeam {
     public void setGroupName(final String groupName) {
         _groupName = groupName;
     }
+
+    @Override
+    public String toString() {
+        return _teamName + "(" + _groupName + ")";
+    }
 }

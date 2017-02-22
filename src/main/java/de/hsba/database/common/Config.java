@@ -5,7 +5,7 @@ package de.hsba.database.common;
  */
 public class Config {
 
-    public static final String JDBC_URL = "jdbc:postgresql://localhost/postgres";
+    public static final String JDBC_URL = "jdbc:postgresql://localhost/emquali";
 
     public static final String JDBC_PASSWORD = "1234qwer";
 
